@@ -14,6 +14,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var movies = [[String:Any]]()
 
     @IBOutlet weak var MoviesTableView: UITableView!
+    
+    
+    
     var users : [[String: Any]] = [["name":"Tim", "hometown": "Flo", "passion":"Hamjing"], ["name" : "Milana", "hometown":"Shostka"], ["name":"Dzvinka", "hometown":"Lviv"]]
     
     override func viewDidLoad(){
@@ -39,15 +42,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-        // Get the index path from the cell that was tapped
+       let cell = sender as! UITableViewCell
+        // Get the path from the cell that was tapped
         let indexPath = MoviesTableView.indexPathForSelectedRow
+        
+        let movie = movies[indexPath!.row]
         // Get the Row of the Index Path and set as index
-        let index = indexPath?.row
+//        let index = indexPath?.row
         // Get in touch with the DetailViewController
         let detailViewController = segue.destination as! DetailViewController
         // Pass on the data to the Detail ViewController by setting it's indexPathRow value
-        detailViewController.index = index
+        detailViewController.movie = movie
+//        tableView(MoviesTableView, willDeselectRowAt: indexPath!)
+        MoviesTableView.deselectRow (at: indexPath!, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
