@@ -15,12 +15,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var MoviesTableView: UITableView!
     
-    
+   
     
     var users : [[String: Any]] = [["name":"Tim", "hometown": "Flo", "passion":"Hamjing"], ["name" : "Milana", "hometown":"Shostka"], ["name":"Dzvinka", "hometown":"Lviv"]]
     
     override func viewDidLoad(){
         super.viewDidLoad()
+         print("hello")
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
